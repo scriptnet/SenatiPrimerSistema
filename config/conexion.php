@@ -10,13 +10,24 @@
 		exit();
 
 	}else{
-		//printf("conexión exitosa");
+		
+
+		$consulta = "SELECT * FROM tblcategoria";
+		if ($result = $conexion->query($consulta)) {
+				while ($row = $result->fetch_assoc()) {
+					printf("%s (%s) \n", $row["idtblcategoria"],$row["nombre"]);
+					echo '<br>';
+				}
+				$result->free();
+		}
+		
 	}
 
-	if (!function_exists('ejecutarConsulta')) {
+	// if (!function_exists('ejecutarConsulta')) {
 		function ejecutarconsulta($sql){
 			global $conexion;
 			$query = $conexion->query($sql);
+			return $query;
 		}
 		function ejecutarunasolafila($sql){
 			global $conexion;
@@ -35,5 +46,5 @@
 			$str = mysqli_real_escape_string($conexion,trim($str));
 			return htmlspecialchars($str);
 		}
-	}
+	// }
 ?>

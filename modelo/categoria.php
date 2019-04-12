@@ -58,7 +58,7 @@
 		public function listar()
 		{
 			$sql="SELECT * FROM tblcategoria";
-			return ejecutarconsulta($sql);
+			return ejecutarConsulta($sql);
 		}
 	}
  ?>

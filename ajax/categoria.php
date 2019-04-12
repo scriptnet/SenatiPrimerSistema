@@ -1,12 +1,12 @@
 <?php
     require_once "../modelo/categoria.php";
 
-    $categoria = new categoria();
+    $categoria = new Categoria();
     
-    $categoria = isset($_POST["idtblcategoria"])?limpiarcadena($_POST["idtblcategoria"]):"";
+    $idcategoria = isset($_POST["idtblcategoria"])?limpiarcadena($_POST["idtblcategoria"]):"";
     $nombre    = isset($_POST["nombre"])?limpiarcadena($_POST["nombre"]):"";
     $descripcion    = isset($_POST["descripcion"])?limpiarcadena($_POST["descripcion"]):"";
-    
+      
     switch ($_GET["op"]){
         case 'guardaryeditar':
             if (empty($categoria)) {
@@ -37,14 +37,16 @@
 
         case 'listar':
                 $respuesta = $categoria->listar();
+
+               
                 //declarar
                 $data[] = array();
                 while ($registro = $respuesta->fetch_object()) {
                     $data[] = array(
-                        "0" => $registro ->idtblcategoria,
-                        "1" => $registro ->nombre,
-                        "2" => $registro ->descripcion,
-                        "3" => $registro ->condicion
+                        "0" => $registro -> idtblcategoria,
+                        "1" => $registro -> nombre,
+                        "2" => $registro -> descripcion,
+                        "3" => $registro -> condicion
                     );
                 }
 
@@ -52,9 +54,10 @@
                     "eEcho" => 1, //informacion para el data table
                     "iTotalRecords" => COUNT($data), //ENVIAMOS EL TOTAL DE REGISTROS 
                     "iTotalDisplayRecords" => COUNT($data),
-                    "aaData" => $data 
+                    "aData" => $data 
                 );
-               echo $resultados json_encode($resultados);
+
+               echo json_encode($resultados);
         break;
     }
 ?>
