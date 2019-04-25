@@ -19,6 +19,6 @@
     <script src="../public/datatables/jszip.min.js"></script>
     <script src="../public/datatables/pdfmake.min.js"></script>
     <script src="../public/datatables/vfs_fonts.js"></script>
-    
+    <script type="text/javascript" src="scripts/categoria.js"></script>
   </body>
 </html>

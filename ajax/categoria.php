@@ -37,10 +37,11 @@
 
         case 'listar':
                 $respuesta = $categoria->listar();
-
+               
                
                 //declarar
-                $data[] = array();
+                $data = array();
+               
                 while ($registro = $respuesta->fetch_object()) {
                     $data[] = array(
                         "0" => $registro -> idtblcategoria,
@@ -48,16 +49,19 @@
                         "2" => $registro -> descripcion,
                         "3" => $registro -> condicion
                     );
-                }
+                    
+                };
 
                 $resultados = array(
                     "eEcho" => 1, //informacion para el data table
                     "iTotalRecords" => COUNT($data), //ENVIAMOS EL TOTAL DE REGISTROS 
                     "iTotalDisplayRecords" => COUNT($data),
-                    "aData" => $data 
+                    "aData" => $data
                 );
-
-               echo json_encode($resultados);
+                echo json_encode($resultados);
+               
         break;
     }
+    
 ?>
+

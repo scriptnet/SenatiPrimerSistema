@@ -30,13 +30,14 @@ function limpiar(){
 		MostrarFormulario(false);
 
 	}
+	var as = "listar";
 	function ListarFormulario(){
-
-		 tabla = $('#tbllistado').DataTable({
+		console.log("s");
+		var tabla = $('#tbllistado').DataTable({
 
 			"aProcessing":true, //activar el procesador de datatable
 			"aServedSide":true, //activar la paginacion y el filtrado por el servidor
-			dom:"Bfrtip",
+			"dom": 'lrtip',
 
 			 buttons: [
 					'copyHtml5',
@@ -47,12 +48,16 @@ function limpiar(){
 		
 
 			"ajax" : {
-				URL:"../ajax/categoria.php?op=listar",
-					type:"get",
-					dataType:"json",
+				
+					url: "../ajax/categoria.php?op="+as,
+					type: "GET",
+					dataType: "json",
+					dataSrc: 'aData',
+					
 					error: function(e){
 						console.log(e.responseText);
 					}
+					
 			},
 
 					
@@ -61,7 +66,7 @@ function limpiar(){
 			"iDisplayLenght":5, //paginacion
 			"order": [[0,"desc"]]
 
-		}).DataTable();
+		} );
     }
 
 init();

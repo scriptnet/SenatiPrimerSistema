@@ -12,14 +12,14 @@
 	}else{
 		
 
-		$consulta = "SELECT * FROM tblcategoria";
-		if ($result = $conexion->query($consulta)) {
-				while ($row = $result->fetch_assoc()) {
-					printf("%s (%s) \n", $row["idtblcategoria"],$row["nombre"]);
-					echo '<br>';
-				}
-				$result->free();
-		}
+		// $consulta = "SELECT * FROM tblcategoria";
+		// if ($result = $conexion->query($consulta)) {
+		// 		while ($row = $result->fetch_assoc()) {
+		// 			printf("%s (%s) \n", $row["idtblcategoria"],$row["nombre"]);
+		// 			echo '<br>';
+		// 		}
+		// 		$result->free();
+		// }
 		
 	}
 

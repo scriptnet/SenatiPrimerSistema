@@ -52,4 +52,3 @@
 <?php 
   require 'footer.php';
  ?>
- <script type="text/javascript" src="scripts/categoria.js"></script>
